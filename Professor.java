@@ -3,10 +3,13 @@ package entidade;
 public class Professor {
 
     private String nome;
-    private String disciplina;
+    private int id_professor;
     private double salario;
 
-    public Professor() {
+    public Professor(String nome, int id_professor, double salario) {
+        this.nome = nome;
+        this.id_professor = id_professor;
+        this.salario = salario;
     }
 
     public void setNome(String nome){
@@ -17,12 +20,12 @@ public class Professor {
         return nome;
     }
 
-    public void setDisciplina(String disciplina){
-        this.disciplina = disciplina;
+    public void setId_professor(int id_professor){
+        this.id_professor = id_professor;
     }
 
-    public String getDisciplina(){
-        return disciplina;
+    public int getId_professor(){
+        return id_professor;
     }
 
     public void setSalario(double salario){
