@@ -1,16 +1,19 @@
+
 package entidade;
 
 public class Aluno {
 
-    public String nome;
-    public int id_aluno;
+    private String nome;
+    private int matricula;
+    private String turma;
 
     public Aluno() {
     }
 
-    public Aluno(String nome, int id_aluno) {
+    public Aluno(String nome, String turma, int matricula) {
         this.nome = nome;
-        this.id_aluno = id_aluno;
+        this.turma = turma;
+        this.matricula = matricula;
     }
 
     public String getNome() {
@@ -21,12 +24,19 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public int getid_aluno() {
-        return id_aluno;
+    public int getMatricula() {
+        return matricula;
     }
 
-    public void setid_aluno(int id_aluno) {
-        this.id_aluno = id_aluno;
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
-    
+
+    public String getTurma() {
+        return turma;
+    }
+
+    public void setTurma(String turma) {
+        this.turma = turma;
+    }
 }

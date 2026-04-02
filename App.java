@@ -1,10 +1,5 @@
 package entidade;
 
-import entidade.Aluno;
-import entidade.Funcionario;
-import entidade.Professor;
-import entidade.disciplina;
-
 public class App {
 
     public static void main(String[] args) {
@@ -12,59 +7,38 @@ public class App {
         Aluno a = new Aluno();
 
         a.setNome("Pedro");
-        a.setid_aluno(1200);
+        a.setMatricula(5444);
+        a.setTurma("3a");
 
         System.out.println("===== ALUNO =====");
         System.out.println("Aluno: " + a.getNome());
-        System.out.println("Matricula: " + a.getid_aluno());
+        System.out.println("Matricula: " + a.getMatricula());
+        System.out.println("Turma: " + a.getTurma());
         
         
+        Escola b = new Escola();
         
-        Funcionario b = new Funcionario(null, null, 0, 0);
-        
-        b.setNome("aroldo");
-        b.setSalario(2000);
-        b.setCargo("cordenador");
-        b.setid_funcionario();
+        b.setNome("ITJ");
+        b.setid_escola(1234);
+        b.setEndereco("rua das flores");
 
-        System.out.println("\n===== FUNCIONARIO =====");
-        System.out.println("\n Funcionario: " + b.getNome());
-        System.out.println("salario: " + b.getSalario());
-        System.out.println("Cargo: " + b.getCargo());
+        System.out.println("\n===== ESCOLA =====");
+        System.out.println("\nEscola: " + b.getNome());
+        System.out.println("ID: " + b.getid_escola());
+        System.out.println("Endereco: " + b.getEndereco());
         
         
-        Professor c = new Professor(null, 0, 0);
+        Professor c = new Professor();
         
         c.setNome("Rodrigo");
-        c.setId_professor(40);
+        c.setDisciplina("POO");
         c.setSalario(2500);
         
         System.out.println("\n===== PROFESSOR =====");
         System.out.println("Professor: " + c.getNome());
         System.out.println("salario: " + c.getSalario());
-       
-        escola d = new escola(null, null, 0);
+        System.out.println("Disciplina: " + c.getDisciplina());
         
-        d.setendereço("rua do padeiro 21");
-        d.setnome("ITJ");
-        d.setid_escola(1);
         
-        System.out.println("\n===== Escola =====");
-        System.out.println("\n escola: " + d.getnome());
-        System.out.println("endereço: " + d.getendereço());
-        
-        disciplina e = new disciplina(null, 0);
-        
-        e.setNome("historia");
-        e.setId_disciplina(0);
-        
-        System.out.println("\n===== disciplina =====");
-        System.out.println("\n disciplina: " + e.getNome());
-     
-       
     }
-    
-    
 }
-
-		
