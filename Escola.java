@@ -2,17 +2,16 @@ package entidade;
 
 public class Escola {
 
-    private String nome;
     private int id_escola;
-    private String Endereco;
+    private String nome;
+    private String endereco;
 
-    public Escola() {
+    public int getId_escola() {
+        return id_escola;
     }
 
-    public Escola(String nome, int id_escola, String Endereco) {
-        this.nome = nome;
+    public void setId_escola(int id_escola) {
         this.id_escola = id_escola;
-        this.Endereco = Endereco;
     }
 
     public String getNome() {
@@ -23,20 +22,11 @@ public class Escola {
         this.nome = nome;
     }
 
-    public int getid_escola() {
-        return id_escola;
-    }
-
-    public void setid_escola(int id_escola) {
-        this.id_escola = id_escola;
-    }
-    
     public String getEndereco() {
-        return Endereco;
+        return endereco;
     }
 
-    public void setEndereco(String Endereco) {
-        this.Endereco = Endereco;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
-
 }

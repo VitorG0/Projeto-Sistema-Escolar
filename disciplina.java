@@ -1,27 +1,23 @@
 package entidade;
 
 public class disciplina {
-    public String nome;
-    public int id_disciplina;
 
-    public disciplina(String nome, int id_disciplina) {
-        this.nome = nome;
-        this.id_disciplina = id_disciplina;
+    private int idDisciplina;
+    private String nomeDisc;
+
+    public int getIdDisciplina() {
+        return idDisciplina;
     }
 
-    public String getNome() {
-        return nome;
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getNomeDisc() {
+        return nomeDisc;
     }
 
-    public int getId_disciplina() {
-        return id_disciplina;
-    }
-
-    public void setId_disciplina(int id_disciplina) {
-        this.id_disciplina = id_disciplina;
+    public void setNomeDisc(String nomeDisc) {
+        this.nomeDisc = nomeDisc;
     }
 }

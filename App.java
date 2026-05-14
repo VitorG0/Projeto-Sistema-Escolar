@@ -1,44 +1,78 @@
 package entidade;
 
+import dao.AlunoDAO;
+import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
+        AlunoDAO alunoDAO = new AlunoDAO();
 
-        Aluno a = new Aluno();
+        System.out.println("===== TESTE DO DAO =====\n");
 
-        a.setNome("Pedro");
-        a.setMatricula(5444);
-        a.setTurma("3a");
+        // 1. Inserir alunos
+        System.out.println("1. Inserindo alunos no banco...");
+        Aluno aluno1 = new Aluno();
+        aluno1.setNome("Pedro");
+        aluno1.setMatricula(5444);
+        aluno1.setTurma("3A");
+        boolean resultado1 = alunoDAO.inserir(aluno1);
+        System.out.println("Aluno 1 inserido: " + (resultado1 ? "SIM" : "NAO") + "\n");
 
-        System.out.println("===== ALUNO =====");
-        System.out.println("Aluno: " + a.getNome());
-        System.out.println("Matricula: " + a.getMatricula());
-        System.out.println("Turma: " + a.getTurma());
-        
-        
-        Escola b = new Escola();
-        
-        b.setNome("ITJ");
-        b.setid_escola(1234);
-        b.setEndereco("rua das flores");
+        Aluno aluno2 = new Aluno();
+        aluno2.setNome("Maria");
+        aluno2.setMatricula(5445);
+        aluno2.setTurma("3A");
+        boolean resultado2 = alunoDAO.inserir(aluno2);
+        System.out.println("Aluno 2 inserido: " + (resultado2 ? "SIM" : "NAO") + "\n");
 
-        System.out.println("\n===== ESCOLA =====");
-        System.out.println("\nEscola: " + b.getNome());
-        System.out.println("ID: " + b.getid_escola());
-        System.out.println("Endereco: " + b.getEndereco());
-        
-        
-        Professor c = new Professor();
-        
-        c.setNome("Rodrigo");
-        c.setDisciplina("POO");
-        c.setSalario(2500);
-        
-        System.out.println("\n===== PROFESSOR =====");
-        System.out.println("Professor: " + c.getNome());
-        System.out.println("salario: " + c.getSalario());
-        System.out.println("Disciplina: " + c.getDisciplina());
-        
-        
+        Aluno aluno3 = new Aluno();
+        aluno3.setNome("João");
+        aluno3.setMatricula(5446);
+        aluno3.setTurma("3B");
+        boolean resultado3 = alunoDAO.inserir(aluno3);
+        System.out.println("Aluno 3 inserido: " + (resultado3 ? "SIM" : "NAO") + "\n");
+
+        // 2. Listar todos os alunos
+        System.out.println("2. Listando todos os alunos do banco...\n");
+        List<Aluno> listaAlunos = alunoDAO.buscarTodos();
+
+        if (listaAlunos.isEmpty()) {
+            System.out.println("Nenhum aluno encontrado.\n");
+        } else {
+            System.out.println("Total de alunos: " + listaAlunos.size() + "\n");
+            for (int i = 0; i < listaAlunos.size(); i++) {
+                Aluno a = listaAlunos.get(i);
+                System.out.println("Aluno " + (i + 1) + ":");
+                System.out.println("  Nome: " + a.getNome());
+                System.out.println("  Matricula: " + a.getMatricula());
+                System.out.println("  Turma: " + a.getTurma());
+                System.out.println();
+            }
+        }
+
+        // 3. Demonstrar outras entidades
+        System.out.println("===== OUTRAS ENTIDADES =====\n");
+
+        Escola escola = new Escola();
+        escola.setNome("ITJ");
+        escola.setId_escola(1234);
+        escola.setEndereco("Rua das Flores");
+
+        System.out.println("ESCOLA:");
+        System.out.println("  Nome: " + escola.getNome());
+        System.out.println("  ID: " + escola.getId_escola());
+        System.out.println("  Endereco: " + escola.getEndereco() + "\n");
+
+        Professor professor = new Professor();
+        professor.setNome("Rodrigo");
+        professor.setDisciplina("POO");
+        professor.setSalario(2500);
+
+        System.out.println("PROFESSOR:");
+        System.out.println("  Nome: " + professor.getNome());
+        System.out.println("  Salario: " + professor.getSalario());
+        System.out.println("  Disciplina: " + professor.getDisciplina());
     }
 }
+
