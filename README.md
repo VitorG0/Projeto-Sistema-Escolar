@@ -1,122 +1,160 @@
-# Projeto-Sistema-Escolar
+# SISTEMA ESCOLAR – DESCRIÇÃO ATUALIZADA DO PROJETO
 
-°OBJETIVO:
+## Objetivo
 
-O objetivo do sistema é realizar o gerenciamento básico de uma instituição de ensino, permitindo o cadastro e controle de alunos, professores, escolas e disciplinas, além de organizar os relacionamentos entre essas entidades.
+O Sistema Escolar é uma aplicação desenvolvida em Java com integração ao banco de dados PostgreSQL, cujo objetivo é realizar o gerenciamento básico de informações acadêmicas. O sistema permite cadastrar e consultar alunos, além de manter a estrutura necessária para o gerenciamento de professores, disciplinas e seus relacionamentos.
 
-O sistema busca facilitar a organização acadêmica, permitindo associar alunos e professores às disciplinas e escolas de forma estruturada.
+O projeto foi desenvolvido para aplicar conceitos de Programação Orientada a Objetos (POO), modelagem de banco de dados relacional, JDBC e padrão DAO, proporcionando uma experiência prática no desenvolvimento de sistemas integrados a banco de dados.
 
-°FUNCIONALIDADES DO SISTEMA
+---
 
-O sistema possui as seguintes funcionalidades principais:
+## Evolução do Projeto
 
-Cadastro de alunos
-Cadastro de professores
-Cadastro de escolas
-Cadastro de disciplinas
-Associação de:
-Professores com escolas
-Professores com disciplinas
-Alunos com disciplinas
-Exibição das informações cadastradas no sistema
-Manipulação de dados através de getters e setters
+Inicialmente, o projeto possuía um escopo mais amplo, incluindo entidades como Escola e outros relacionamentos administrativos. Durante o desenvolvimento, o escopo foi reduzido para concentrar os esforços nas funcionalidades acadêmicas essenciais.
 
-°MODELAGEM DE SISTEMA:
-A modelagem foi feita utilizando o paradigma de Programação Orientada a Objetos (POO).
+Essa alteração permitiu uma implementação mais consistente das funcionalidades principais, priorizando a integração com banco de dados e a organização da arquitetura do sistema.
 
-°Classes principais:
+As entidades relacionadas à gestão escolar foram removidas, mantendo o foco em:
 
-Aluno:
-nome
-matrícula
-turma
+* Alunos
+* Professores
+* Disciplinas
+* Relacionamentos acadêmicos
 
-Professor:
-nome
-disciplina
-salário
+---
 
-Escola:
-nome
-id_escola
-endereço
+## Funcionalidades Implementadas
 
-Disciplina:
-nome
-id_disciplina
+### Cadastro de Alunos
 
-App (Main):
-Responsável por executar o sistema e testar os objetos
+O sistema permite registrar alunos no banco de dados armazenando:
 
-°RELACIONAMENTOS
+* Nome
+* Matrícula
+* Turma
 
-O sistema possui diversos relacionamentos importantes:
+### Consulta de Alunos
 
-ALUNO ↔ DISCIPLINA
-Um aluno pode estar em várias disciplinas
-Uma disciplina pode ter vários alunos
-(Relacionamento N:N)
+É possível realizar buscas de alunos através do identificador único (ID), retornando suas informações cadastradas.
 
-PROFESSOR ↔ DiSCIPLINA
-Um professor pode lecionar várias disciplinas
-Uma disciplina pode ter vários professores
-(Relacionamento N:N)
+### Persistência de Dados
 
-PROFESSOR ↔ ESCOLA
-Um professor pode trabalhar em várias escolas
-Uma escola pode ter vários professores
-(Relacionamento N:N)
+O sistema realiza:
 
-°REGRAS DE NEGÓCIO
+* Conexão com PostgreSQL através de JDBC.
+* Inserção de registros no banco de dados.
+* Consulta de registros armazenados.
+* Tratamento básico de exceções.
+* Encerramento seguro da conexão.
 
-Todo aluno deve possuir um nome válido
-Toda disciplina deve ter um nome definido
-Um professor pode lecionar mais de uma disciplina
-Um aluno pode estar matriculado em várias disciplinas
-Não é permitido cadastrar entidades sem identificação básica
-Os relacionamentos devem respeitar as chaves estrangeiras no banco
+---
 
-°BANCO DE DADOS
+## Modelagem do Sistema
 
-O banco de dados foi estruturado utilizando modelo relacional com as seguintes tabelas:
+O projeto segue os princípios da Programação Orientada a Objetos.
 
-°TABELAS PRINCIPAIS:
-escola
-professor
-aluno
-disciplina
+### Classe Aluno
 
-TABELA DE RELACIONAMENTO:
-escola_prof (Professor x Escola)
-prof_disc (Professor x Disciplina)
-aluno_disc (Aluno x Disciplina)
+Representa os dados dos alunos.
 
-°CARACTERÍSTICA:
-Uso de PRIMARY KEY
-Uso de FOREIGN KEY
-Relacionamentos N:N resolvidos com tabelas associativas
-Tipos de dados adequados (VARCHAR, NUMERIC, DATE, etc.)
+Atributos:
 
-°TECNOLOGIAS UTILIZADAS
+* id_aluno
+* nome
+* matricula
+* turma
 
-Java
-Programação Orientada a Objetos
-SQL (PostgreSQL ou compatível)
-Criação e gerenciamento do banco de dados
-Estrutura em pacotes (package entidade)
+### Classe AlunoDao
 
-°CONSIDERAÇÕES FINAIS
+Responsável pelo acesso aos dados dos alunos.
 
-O sistema desenvolvido apresenta uma base sólida para um sistema de gestão escolar, aplicando conceitos importantes como:
+Funcionalidades:
 
-Programação Orientada a Objetos
-Encapsulamento (getters e setters)
-Modelagem de banco de dados relacional
-Uso de relacionamentos complexos (N:N)
+* Salvar aluno.
+* Buscar aluno por ID.
 
-Apesar de ser um sistema simples, ele pode ser expandido futuramente com:
+### Classe Conexao
 
-Interface gráfica
-Integração com banco de dados real via JDBC
-Funcionalidades de login e autenticação
-CRUD completo (Create, Read, Update, Delete)
+Responsável por estabelecer a comunicação entre a aplicação Java e o banco PostgreSQL.
+
+### Classe App
+
+Classe principal utilizada para executar e testar as funcionalidades do sistema.
+
+---
+
+## Modelagem do Banco de Dados
+
+### Tabela aluno
+
+* id_aluno (PK)
+* nome
+* matricula
+* turma
+
+### Tabela professor
+
+* id_professor (PK)
+* nome_professor
+
+### Tabela disciplina
+
+* id_disciplina (PK)
+* nome_disciplina
+
+---
+
+## Relacionamentos
+
+### Aluno × Disciplina
+
+Relacionamento muitos para muitos (N:N).
+
+Um aluno pode cursar várias disciplinas e uma disciplina pode possuir vários alunos.
+
+Tabela associativa:
+
+* aluno_disc
+
+Campos:
+
+* id_aluno
+* id_disciplina
+* data_entrada
+* data_saida
+
+### Professor × Disciplina
+
+Relacionamento muitos para muitos (N:N).
+
+Um professor pode lecionar várias disciplinas e uma disciplina pode possuir vários professores.
+
+Tabela associativa:
+
+* prof_disc
+
+Campos:
+
+* id_professor
+* id_disciplina
+* data_entrada
+* data_saida
+
+---
+
+## Tecnologias Utilizadas
+
+* Java
+* PostgreSQL
+* JDBC
+* SQL
+* Programação Orientada a Objetos
+* Padrão DAO
+
+---
+
+## Considerações Finais
+
+O projeto evoluiu de uma proposta mais abrangente para uma solução focada nas funcionalidades acadêmicas essenciais. Essa redução de escopo permitiu concentrar o desenvolvimento na implementação prática da persistência de dados e na aplicação de boas práticas de programação.
+
+Atualmente, o sistema já realiza operações de cadastro e consulta de alunos em banco de dados real, representando uma base sólida para futuras expansões, como a implementação de CRUD completo, gerenciamento de professores e disciplinas, além de interfaces gráficas ou web.
